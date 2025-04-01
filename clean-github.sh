@@ -2,7 +2,7 @@ OWNER="LorenzoLeonardo"
 
 # Deleting all artifacts
 echo "Start Deleting all artifacts . . ."
-gh repo list $OWNER --json name --jq '.[].name' | while read -r REPO; do
+gh repo list $OWNER --limit 1000 --json name --jq '.[].name' | while read -r REPO; do
     echo "Processing repository: $REPO"
 
     # Handle pagination
@@ -26,7 +26,7 @@ done
 echo "End Deleting all artifacts . . ."
 
 echo "Start Deleting all workflow runs . . ."
-gh repo list $OWNER --json name --jq '.[].name' | while read -r REPO; do
+gh repo list $OWNER --limit 1000 --json name --jq '.[].name' | while read -r REPO; do
     echo "Processing repository: $REPO"
 
     # Get total workflow runs and process them in pages
@@ -51,7 +51,7 @@ echo "End Deleting all workflow runs . . ."
 
 echo "Start Deleting all Caches . . ."
 # Loop through all repositories
-gh repo list $OWNER --json name --jq '.[].name' | while read -r REPO; do
+gh repo list $OWNER --limit 1000 --json name --jq '.[].name' | while read -r REPO; do
     echo "Processing repository: $REPO"
 
     # Handle pagination
