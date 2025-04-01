@@ -8,6 +8,7 @@ for /f "delims=" %%R in ('gh repo list %OWNER% --limit 1000 --json name --jq ".[
         echo Deleting artifact ID: %%A from %%R
         gh api -X DELETE repos/%OWNER%/%%R/actions/artifacts/%%A
     )
+    echo No more artifacts to delete in %%R
 )
 echo End Deleting all artifacts . . .
 
@@ -18,6 +19,7 @@ for /f "delims=" %%R in ('gh repo list %OWNER% --limit 1000 --json name --jq ".[
         echo Deleting workflow run ID: %%W from %%R
         gh api -X DELETE repos/%OWNER%/%%R/actions/runs/%%W
     )
+    echo No more workflow runs to delete in %%R
 )
 echo End Deleting all workflow runs . . .
 
@@ -28,5 +30,6 @@ for /f "delims=" %%R in ('gh repo list %OWNER% --limit 1000 --json name --jq ".[
         echo Deleting cache ID: %%C from %%R
         gh api -X DELETE repos/%OWNER%/%%R/actions/caches/%%C
     )
+    echo No more caches to delete in %%R
 )
 echo End Deleting all Caches . . .
