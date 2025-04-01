@@ -1,3 +1,21 @@
+# This script deletes all artifacts, workflow runs, and caches from all repositories owned by a specified GitHub user.
+# It uses the GitHub CLI to interact with the GitHub API.
+# It requires the user to have the GitHub CLI installed and authenticated.
+# Make sure to replace "LorenzoLeonardo" with your GitHub username or organization name.
+# Usage: ./clean-github.sh
+# Make sure to give execute permission to the script: chmod +x clean-github.sh
+# Run the script: ./clean-github.sh
+# Created by LorenzoLeonardo on 2023-04-01
+
+#!/bin/bash
+
+# Check if gh CLI is installed
+if ! command -v gh &> /dev/null
+then
+    echo "gh CLI could not be found. Please install it first."
+    exit
+fi
+
 OWNER="LorenzoLeonardo"
 
 # Deleting all artifacts
